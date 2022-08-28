@@ -25,7 +25,7 @@ function initDrums() {
     DRUM_NOTES[i] = new DrumElement(
       Math.floor((i / NUM_DRUM_NOTES) * windowWidth),
       Math.floor(windowWidth / NUM_DRUM_NOTES),
-      [(255, 100, 10)]
+      [255, 100, 10]
     );
   }
 }
@@ -49,4 +49,14 @@ function processDrumNoteOn({ note, velocity }) {
 function processDrumNoteOff({ note, velocity }) {
   note = note - DRUM_RACK_NOTE_OFFSET;
   DRUM_NOTES[note].hide();
+}
+
+function drawDrumNotes() {
+  DRUM_NOTES.forEach((note) => {
+    if (note.isOn) {
+      let c = color(...note.color);
+      fill(c);
+      rect(note.x, note.y, note.width, note.height);
+    }
+  });
 }

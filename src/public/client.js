@@ -106,9 +106,5 @@ function windowResized() {
 
 function draw() {
   background(RED, GREEN, BLUE);
-  DRUM_NOTES.forEach((note) => {
-    if (note.isOn) {
-      rect(note.x, note.y, note.width, note.height);
-    }
-  });
+  drawDrumNotes();
 }
